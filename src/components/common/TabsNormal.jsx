@@ -52,12 +52,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TabsNormal({ itemTabs, idTabs, tabsVariant, p }) {
+export default function TabsNormal({
+  itemTabs,
+  tabToShow,
+  setTabToShow,
+  idTabs,
+  tabsVariant,
+  p,
+}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  // const [value, setValue] = React.useState(tabToShow ? tabToShow : 0);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setTabToShow(newValue);
   };
 
   return (
@@ -67,7 +74,7 @@ export default function TabsNormal({ itemTabs, idTabs, tabsVariant, p }) {
           classes={{
             indicator: classes.indicator,
           }}
-          value={value}
+          value={tabToShow}
           onChange={handleChange}
           variant={tabsVariant}
         >
@@ -87,7 +94,7 @@ export default function TabsNormal({ itemTabs, idTabs, tabsVariant, p }) {
         return (
           <TabPanel
             key={`${idTabs}-${item.index}`}
-            value={value}
+            value={tabToShow}
             index={item.index}
             p={p}
           >

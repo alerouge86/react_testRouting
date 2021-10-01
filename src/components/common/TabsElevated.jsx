@@ -44,14 +44,14 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-const TabsElevated = ({ itemTabs, idTabs, p }) => {
+const TabsElevated = ({ itemTabs, tabToShow, setTabToShow, idTabs, p }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  // const [value, setValue] = React.useState(0);
   const tabsStyles = elevatedTabsStylesHook.useTabs();
   const tabItemStyles = elevatedTabsStylesHook.useTabItem();
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setTabToShow(newValue);
   };
 
   return (
@@ -59,7 +59,7 @@ const TabsElevated = ({ itemTabs, idTabs, p }) => {
       <Tabs
         classes={tabsStyles}
         className={classes.tabs}
-        value={value}
+        value={tabToShow}
         onChange={handleChange}
         variant="fullWidth"
       >
@@ -80,7 +80,7 @@ const TabsElevated = ({ itemTabs, idTabs, p }) => {
         return (
           <TabPanel
             key={`${idTabs}-${item.index}`}
-            value={value}
+            value={tabToShow}
             index={item.index}
             p={p}
           >
