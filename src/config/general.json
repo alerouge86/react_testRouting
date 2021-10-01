@@ -1,0 +1,10 @@
+{
+  "app": {
+    "title": "title",
+    "title2": "title 2"
+  },
+  "internalization": {
+    "languages": ["uk", "ua", "it"],
+    "defaultLanguage": "uk"
+  }
+}
