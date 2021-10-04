@@ -92,27 +92,21 @@ const Topbar = ({ handleMenuClick, ...props }) => {
             </Link>
           </li>
           <li className={classes.navbarListElement}>
-            <Link to="/home?mainTab=explore" className={classes.link}>
+            <Link to="/explore" className={classes.link}>
               <span style={{ color: "white", fontWeight: "bold" }}>
                 Explore
               </span>
             </Link>
           </li>
           <li className={classes.navbarListElement}>
-            <Link
-              to="/home?mainTab=home&tabHome=calendar"
-              className={classes.link}
-            >
+            <Link to="/calendar" className={classes.link}>
               <span style={{ color: "white", fontWeight: "bold" }}>
                 Calendar
               </span>
             </Link>
           </li>
           <li className={classes.navbarListElement}>
-            <Link
-              to="/home?mainTab=home&tabHome=create"
-              className={classes.link}
-            >
+            <Link to="/create" className={classes.link}>
               <span style={{ color: "white", fontWeight: "bold" }}>Wizard</span>
             </Link>
           </li>

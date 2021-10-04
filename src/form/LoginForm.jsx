@@ -61,7 +61,7 @@ const LoginForm = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          {t("general.signIn")}
+          Sign in
         </Typography>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -73,7 +73,7 @@ const LoginForm = () => {
               <MyTextField
                 control={control}
                 name="email"
-                label={t("form.email")}
+                label="Email"
                 errors={errors}
                 required
               />
@@ -83,7 +83,7 @@ const LoginForm = () => {
                 control={control}
                 name="password"
                 type="password"
-                label={t("form.password")}
+                label="Password"
                 errors={errors}
                 required
               />
@@ -92,7 +92,7 @@ const LoginForm = () => {
               <MyCheckbox
                 control={control}
                 name="remember"
-                label={t("form.rememberMe")}
+                label="Remember me"
               />
             </Grid>
           </Grid>
@@ -104,20 +104,8 @@ const LoginForm = () => {
             color="primary"
             className={classes.submit}
           >
-            {t("general.signIn")}
+            Sign in
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link className={classes.link} to="/">
-                {t("form.forgotPassword")}?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link className={classes.link} to="/register">
-                {t("form.noAccount")}? {t("general.signUp")}
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
     </Container>

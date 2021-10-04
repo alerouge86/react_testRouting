@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import queryString from "query-string";
+import { useRouteMatch } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import PublicIcon from "@material-ui/icons/Public";
 import TabHome from "./tabHome/TabHome";
@@ -8,27 +7,22 @@ import TabsNormal from "../common/TabsNormal";
 import LabelTab from "../common/LabelTab";
 
 export default function MainTabs(props) {
-  const { location } = props;
-  const { mainTab } = queryString.parse(location.search);
-  let mainTabIndex = 0;
-  if (mainTab) {
-    if (mainTab === "home") {
-      mainTabIndex = 1;
+  const match = useRouteMatch();
+  const pathMatch = match.path;
+  let tabIndex = 0;
+  if (pathMatch) {
+    if (
+      pathMatch !== "/" &&
+      pathMatch !== "/home" &&
+      pathMatch !== "/explore"
+    ) {
+      tabIndex = 1;
     }
   }
   const [tabToShow, setTabToShow] = useState(0);
   useEffect(() => {
-    setTabToShow(mainTabIndex);
+    setTabToShow(tabIndex);
   }, []);
-
-  const { push } = useHistory();
-  const handleChangeTab = (tabIndex) => {
-    if (tabIndex === 0) {
-      push("/home?mainTab=explore");
-    } else if (tabIndex === 1) {
-      push("/home?mainTab=home&tabHome=calendar");
-    }
-  };
 
   const itemsTabs = [
     {
@@ -50,7 +44,7 @@ export default function MainTabs(props) {
     <TabsNormal
       itemTabs={itemsTabs}
       tabToShow={tabToShow}
-      changeTab={handleChangeTab}
+      changeTab={setTabToShow}
       idTabs="tabsMain"
       tabsVariant="fullWidth"
       p={2}
