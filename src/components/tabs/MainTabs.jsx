@@ -8,11 +8,16 @@ import LabelTab from "../common/LabelTab";
 
 export default function MainTabs(props) {
   const { location } = props;
-  let { mainTab } = queryString.parse(location.search);
-  mainTab = mainTab ? parseInt(mainTab) : 0;
+  const { mainTab } = queryString.parse(location.search);
+  let mainTabIndex = 0;
+  if (mainTab) {
+    if (mainTab === "home") {
+      mainTabIndex = 1;
+    }
+  }
   const [tabToShow, setTabToShow] = useState(0);
   useEffect(() => {
-    setTabToShow(mainTab);
+    setTabToShow(mainTabIndex);
   }, []);
 
   const itemsTabs = [

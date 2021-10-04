@@ -8,11 +8,16 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 
 const TabHome = (props) => {
   const { location } = props;
-  let { tabHome } = queryString.parse(location.search);
-  tabHome = tabHome ? parseInt(tabHome) : 0;
+  const { tabHome } = queryString.parse(location.search);
+  let tabHomeIndex = 0;
+  if (tabHome) {
+    if (tabHome === "create") {
+      tabHomeIndex = 1;
+    }
+  }
   const [tabToShow, setTabToShow] = useState(0);
   useEffect(() => {
-    setTabToShow(tabHome);
+    setTabToShow(tabHomeIndex);
   }, []);
 
   const { t } = useTranslation();
