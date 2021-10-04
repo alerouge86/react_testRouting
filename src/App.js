@@ -20,7 +20,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route
-              path={["/home", "/explore", "/calendar", "/create"]}
+              path="/home"
               render={(props) => <Home key={uuidv4()} {...props} />}
             />
             <Route path="/login" component={Login} />

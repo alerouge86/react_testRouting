@@ -39,19 +39,19 @@ const Pages = ({ handleStep }) => {
     <div>
       <Route
         exact
-        path="/create"
+        path="/"
         render={(props) => (
           <CreateEventWizard1 handleStep={handleStep} {...props} />
         )}
       />
       <Route
-        path="/create/step2"
+        path="/step2"
         render={(props) => (
           <CreateEventWizard2 handleStep={handleStep} {...props} />
         )}
       />
       <Route
-        path="/create/step3"
+        path="/step3"
         render={(props) => (
           <CreateEventWizard3 handleStep={handleStep} {...props} />
         )}

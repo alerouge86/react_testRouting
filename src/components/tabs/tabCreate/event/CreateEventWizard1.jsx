@@ -52,7 +52,7 @@ const CreateEventWizard1 = ({ handleStep }) => {
     handleStep("next");
     actions.updateAction(data);
     console.log("state", state);
-    push("/create/step2");
+    push("/step2");
   };
 
   return (
