@@ -29,12 +29,12 @@ const CreateEventWizard3 = ({ handleStep }) => {
     // });
     // console.log("state after", state);
     handleStep("completed");
-    push("/");
+    push("/create");
   };
 
   const handleStepBack = () => {
     handleStep("back");
-    push("/step2");
+    push("/create/step2");
   };
 
   const handleCancel = () => {
