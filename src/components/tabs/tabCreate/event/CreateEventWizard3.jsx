@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../../../../service/store/updateAction";
-import clearAction from "../../../../service/store/clearAction";
 import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,17 +14,17 @@ const useStyles = makeStyles((theme) => ({
 
 const CreateEventWizard3 = ({ handleStep }) => {
   const classes = useStyles();
-  const { state, action } = useStateMachine(clearAction);
+  const { actions, state } = useStateMachine({ updateAction });
 
   const { push } = useHistory();
   const handleFinish = () => {
-    // console.log("state before", state);
-    // actions.updateAction({
-    //   yourDetails: {
-    //     firstName: "",
-    //     lastName: "",
-    //   },
-    // });
+    console.log("handleFinish");
+    actions.updateAction({
+      yourDetails: {
+        firstName: "",
+        lastName: "",
+      },
+    });
     // console.log("state after", state);
     handleStep("completed");
     push("/");
@@ -37,10 +36,13 @@ const CreateEventWizard3 = ({ handleStep }) => {
   };
 
   const handleCancel = () => {
-    action({});
-    // props.history.push("./resultFinal");
-    console.log(state, action);
-    action();
+    console.log("handleCancel");
+    actions.updateAction({
+      yourDetails: {
+        firstName: "",
+        lastName: "",
+      },
+    });
   };
 
   return (

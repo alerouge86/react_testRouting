@@ -66,9 +66,9 @@ const CreateEventWizard2 = ({ handleStep }) => {
         </Grid>
 
         <div className={classes.buttons}>
-          <Button variant="contained" onClick={handleCancel}>
+          {/* <Button variant="contained" onClick={handleCancel}>
             Cancel
-          </Button>
+          </Button> */}
           <Button
             variant="contained"
             color="secondary"
