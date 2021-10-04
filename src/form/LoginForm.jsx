@@ -1,8 +1,6 @@
-import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -43,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginForm = () => {
-  const { t } = useTranslation();
   const classes = useStyles();
   const {
     control,

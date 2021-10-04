@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useRouteMatch } from "react-router-dom";
-import queryString from "query-string";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import TabsElevated from "../../common/TabsElevated";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import TabCreate from "../tabCreate/TabCreate";
@@ -19,7 +18,16 @@ const TabHome = (props) => {
   const [tabToShow, setTabToShow] = useState(0);
   useEffect(() => {
     setTabToShow(tabIndex);
-  }, []);
+  }, [tabIndex]);
+
+  const { push } = useHistory();
+  const handleChangeTab = (tabIndex) => {
+    if (tabIndex === 0) {
+      push("/calendar");
+    } else if (tabIndex === 1) {
+      push("/create");
+    }
+  };
 
   const { t } = useTranslation();
   const itemsTabs = [
@@ -39,7 +47,7 @@ const TabHome = (props) => {
     <TabsElevated
       itemTabs={itemsTabs}
       tabToShow={tabToShow}
-      changeTab={setTabToShow}
+      changeTab={handleChangeTab}
       idTabs="tabsEventsClubs"
       p={0}
     />

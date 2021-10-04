@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import PublicIcon from "@material-ui/icons/Public";
 import TabHome from "./tabHome/TabHome";
@@ -22,7 +22,16 @@ export default function MainTabs(props) {
   const [tabToShow, setTabToShow] = useState(0);
   useEffect(() => {
     setTabToShow(tabIndex);
-  }, []);
+  }, [tabIndex]);
+
+  const { push } = useHistory();
+  const handleChangeTab = (tabIndex) => {
+    if (tabIndex === 0) {
+      push("/explore");
+    } else if (tabIndex === 1) {
+      push("/calendar");
+    }
+  };
 
   const itemsTabs = [
     {
@@ -44,7 +53,7 @@ export default function MainTabs(props) {
     <TabsNormal
       itemTabs={itemsTabs}
       tabToShow={tabToShow}
-      changeTab={setTabToShow}
+      changeTab={handleChangeTab}
       idTabs="tabsMain"
       tabsVariant="fullWidth"
       p={2}

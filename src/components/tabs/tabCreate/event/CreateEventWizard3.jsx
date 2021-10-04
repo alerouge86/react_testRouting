@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../../../../service/store/updateAction";
