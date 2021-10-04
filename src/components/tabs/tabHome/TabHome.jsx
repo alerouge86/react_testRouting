@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 import queryString from "query-string";
 import TabsElevated from "../../common/TabsElevated";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
@@ -20,6 +21,15 @@ const TabHome = (props) => {
     setTabToShow(tabHomeIndex);
   }, []);
 
+  const { push } = useHistory();
+  const handleChangeTab = (tabIndex) => {
+    if (tabIndex === 0) {
+      push("/home?mainTab=home&tabHome=calendar");
+    } else if (tabIndex === 1) {
+      push("/home?mainTab=home&tabHome=create");
+    }
+  };
+
   const { t } = useTranslation();
   const itemsTabs = [
     {
@@ -38,7 +48,7 @@ const TabHome = (props) => {
     <TabsElevated
       itemTabs={itemsTabs}
       tabToShow={tabToShow}
-      setTabToShow={setTabToShow}
+      changeTab={handleChangeTab}
       idTabs="tabsEventsClubs"
       p={0}
     />

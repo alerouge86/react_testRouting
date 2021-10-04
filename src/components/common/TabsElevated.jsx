@@ -44,14 +44,13 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-const TabsElevated = ({ itemTabs, tabToShow, setTabToShow, idTabs, p }) => {
+const TabsElevated = ({ itemTabs, tabToShow, changeTab, idTabs, p }) => {
   const classes = useStyles();
-  // const [value, setValue] = React.useState(0);
   const tabsStyles = elevatedTabsStylesHook.useTabs();
   const tabItemStyles = elevatedTabsStylesHook.useTabItem();
 
   const handleChange = (event, newValue) => {
-    setTabToShow(newValue);
+    changeTab(newValue);
   };
 
   return (

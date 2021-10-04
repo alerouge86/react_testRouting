@@ -55,16 +55,15 @@ const useStyles = makeStyles((theme) => ({
 export default function TabsNormal({
   itemTabs,
   tabToShow,
-  setTabToShow,
+  changeTab,
   idTabs,
   tabsVariant,
   p,
 }) {
   const classes = useStyles();
-  // const [value, setValue] = React.useState(tabToShow ? tabToShow : 0);
 
   const handleChange = (event, newValue) => {
-    setTabToShow(newValue);
+    changeTab(newValue);
   };
 
   return (

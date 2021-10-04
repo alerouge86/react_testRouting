@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import queryString from "query-string";
 import HomeIcon from "@material-ui/icons/Home";
 import PublicIcon from "@material-ui/icons/Public";
@@ -20,6 +21,15 @@ export default function MainTabs(props) {
     setTabToShow(mainTabIndex);
   }, []);
 
+  const { push } = useHistory();
+  const handleChangeTab = (tabIndex) => {
+    if (tabIndex === 0) {
+      push("/home?mainTab=explore");
+    } else if (tabIndex === 1) {
+      push("/home?mainTab=home&tabHome=calendar");
+    }
+  };
+
   const itemsTabs = [
     {
       index: 0,
@@ -40,7 +50,7 @@ export default function MainTabs(props) {
     <TabsNormal
       itemTabs={itemsTabs}
       tabToShow={tabToShow}
-      setTabToShow={setTabToShow}
+      changeTab={handleChangeTab}
       idTabs="tabsMain"
       tabsVariant="fullWidth"
       p={2}
